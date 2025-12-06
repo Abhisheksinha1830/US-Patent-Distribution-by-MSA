@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Patent Distribution by MSA - 2015</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .intro {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .intro h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .intro p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .viz-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .viz-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .viz-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .viz-header {
+            background: #f0f0f0;
+            padding: 15px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .viz-header h3 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        
+        .viz-header p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .viz-image {
+            width: 100%;
+            height: 400px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .viz-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+        }
+        
+        .viz-description {
+            padding: 15px;
+            background: white;
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .feature-list {
+            list-style-position: inside;
+            padding: 10px 0;
+        }
+        
+        .feature-list li {
+            padding: 5px 0;
+            color: #666;
+        }
+        
+        .feature-list li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-box {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .viz-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .viz-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗺️ US Patent Distribution by MSA</h1>
+            <p>Interactive visualization of patent counts across Metropolitan Statistical Areas (2015)</p>
+        </header>
+        
+        <div class="content">
+            <div class="intro">
+                <h2>Overview</h2>
+                <p>
+                    This visualization displays the distribution of patents across Metropolitan Statistical Areas (MSAs) in the United States for 2015. 
+                    The data is represented through choropleth maps, where the color intensity indicates the number of patents in each region. 
+                    Lighter shades represent lower patent counts, while darker shades indicate higher concentrations of patent activity.
+                </p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-value">2015</div>
+                    <div class="stat-label">Analysis Year</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">384</div>
+                    <div class="stat-label">MSAs Covered</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">YlOrRd</div>
+                    <div class="stat-label">Color Scheme</div>
+                </div>
+            </div>
+            
+            <div class="viz-container">
+                <div class="viz-item">
+                    <div class="viz-header">
+                        <h3>View 1: Complete Choropleth Map</h3>
+                        <p>Full overview of all MSAs</p>
+                    </div>
+                    <div class="viz-image">
+                        <img src="patent_choropleth_static.png" alt="Patents by MSA - Complete Map">
+                    </div>
+                    <div class="viz-description">
+                        <strong>Description:</strong> A comprehensive choropleth map showing patent distribution across all Metropolitan Statistical Areas in the United States. The color gradient (Yellow to Orange to Red) represents patent counts, providing a clear visualization of geographic innovation patterns.
+                        <ul class="feature-list">
+                            <li>Complete US coverage</li>
+                            <li>Color-coded by patent count</li>
+                            <li>Integrated legend/colorbar</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="viz-item">
+                    <div class="viz-header">
+                        <h3>View 2: Top 5 MSAs Highlighted</h3>
+                        <p>Focus on leading patent regions</p>
+                    </div>
+                    <div class="viz-image">
+                        <img src="patent_choropleth_static.png" alt="Patents by MSA - Top 5 Highlighted">
+                    </div>
+                    <div class="viz-description">
+                        <strong>Description:</strong> Enhanced version of the choropleth map with the top 5 MSAs by patent count highlighted with bold black outlines. Each top region is marked with a labeled marker, making it easy to identify and locate the leading innovation hubs.
+                        <ul class="feature-list">
+                            <li>Base map with all MSAs</li>
+                            <li>Top 5 regions highlighted</li>
+                            <li>Labels with patent counts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <h3>Key Insights</h3>
+                <p>
+                    <strong>Innovation Hotspots:</strong> The map clearly shows that patent activity is concentrated in specific regions, 
+                    particularly in coastal areas and major metropolitan centers. The West Coast (California), Northeast Corridor, and 
+                    select Midwest regions show the highest patent concentrations.
+                </p>
+                <br>
+                <p>
+                    <strong>Data Source:</strong> US Patent and Trademark Office (USPTO) patent grant data aggregated by Metropolitan Statistical Area. 
+                    The boundaries are from the U.S. Census Bureau 2018 cartographic boundary files.
+                </p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 Patent Distribution Visualization | Data Year: 2015 | Created with Python, GeoPandas, and Matplotlib</p>
+        </footer>
+    </div>
+</body>
+</html>
