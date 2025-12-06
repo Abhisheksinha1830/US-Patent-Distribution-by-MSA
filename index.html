@@ -251,11 +251,6 @@
                     </div>
                     <div class="viz-description">
                         <strong>Description:</strong> A comprehensive choropleth map showing patent distribution across all Metropolitan Statistical Areas in the United States. The color gradient (Yellow to Orange to Red) represents patent counts, providing a clear visualization of geographic innovation patterns.
-                        <ul class="feature-list">
-                            <li>Complete US coverage</li>
-                            <li>Color-coded by patent count</li>
-                            <li>Integrated legend/colorbar</li>
-                        </ul>
                     </div>
                 </div>
                 
@@ -269,11 +264,6 @@
                     </div>
                     <div class="viz-description">
                         <strong>Description:</strong> Enhanced version of the choropleth map with the top 5 MSAs by patent count highlighted with bold black outlines. Each top region is marked with a labeled marker, making it easy to identify and locate the leading innovation hubs.
-                        <ul class="feature-list">
-                            <li>Base map with all MSAs</li>
-                            <li>Top 5 regions highlighted</li>
-                            <li>Labels with patent counts</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -281,14 +271,32 @@
             <div class="highlight">
                 <h3>Key Insights</h3>
                 <p>
-                    <strong>Innovation Hotspots:</strong> The map clearly shows that patent activity is concentrated in specific regions, 
-                    particularly in coastal areas and major metropolitan centers. The West Coast (California), Northeast Corridor, and 
-                    select Midwest regions show the highest patent concentrations.
+                    <strong>Innovation Hotspots:</strong> Patent activity is highly concentrated in a small number of MSAs. The highest totals in this dataset include:
                 </p>
-                <br>
+                <ul class="feature-list">
+                    <li><strong>San Jose-Sunnyvale-Santa Clara, CA:</strong> 143,473 patents (highest MSA total)</li>
+                    <li><strong>New York:</strong> 92,577 patents</li>
+                    <li><strong>San Francisco:</strong> 89,981 patents</li>
+                    <li><strong>Los Angeles:</strong> 74,381 patents</li>
+                    <li><strong>Boston:</strong> 62,653 patents</li>
+                </ul>
+
                 <p>
-                    <strong>Data Source:</strong> US Patent and Trademark Office (USPTO) patent grant data aggregated by Metropolitan Statistical Area. 
-                    The boundaries are from the U.S. Census Bureau 2018 cartographic boundary files.
+                    <strong>Distribution characteristics:</strong> The patent counts are strongly right-skewed — a handful of metro areas contain a large share of total patents. This makes linear color scales appear very light for most areas. Consider using a log scale, quantile bins, or percentile-based normalization to improve visual contrast.
+                </p>
+
+                <p>
+                    <strong>Suggested next analyses:</strong>
+                </p>
+                <ul class="feature-list">
+                    <li>Normalize patent counts by population or employment to compute patents per capita or per employee.</li>
+                    <li>Aggregate MSAs to state level for a higher-level view and easier labeling.</li>
+                    <li>Show temporal trends (small multiples or an animated map) to observe how innovation hubs change over time.</li>
+                    <li>Include interactive popups (Folium/Leaflet) so users can explore exact counts and metadata on hover/click.</li>
+                </ul>
+
+                <p>
+                    <strong>Data Source:</strong> US Patent and Trademark Office (USPTO) patent grant data aggregated by Metropolitan Statistical Area. The boundaries are from the U.S. Census Bureau cartographic boundary files.
                 </p>
             </div>
         </div>
