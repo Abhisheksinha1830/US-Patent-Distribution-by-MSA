@@ -1,8 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>US Patent Distribution by MSA - 2015</title>
     <style>
         * {
@@ -162,6 +163,16 @@
             margin: 20px 0;
             border-left: 4px solid #ffc107;
         }
+
+        .summary {
+            background: #eef6ff;
+            padding: 18px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+            color: #333;
+            line-height: 1.6;
+        }
         
         .stats {
             display: grid;
@@ -235,8 +246,8 @@
                     <div class="stat-label">MSAs Covered</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value">143,473</div>
-                    <div class="stat-label">Max patents (MSA total)</div>
+                    <div class="stat-value">14,618</div>
+                    <div class="stat-label">Top MSA patents</div>
                 </div>
             </div>
             
@@ -247,7 +258,7 @@
                         <p>Full overview of all MSAs</p>
                     </div>
                     <div class="viz-image">
-                        <img src="total_patent_count.png" alt="Patents by MSA - Complete Map">
+                        <img src="total_patent_count.png" alt="Patents by MSA - Complete Map" />
                     </div>
                     <div class="viz-description">
                         <strong>Description:</strong> A comprehensive choropleth map showing patent distribution across all Metropolitan Statistical Areas in the United States. The color gradient (Yellow to Orange to Red) represents patent counts, providing a clear visualization of geographic innovation patterns.
@@ -260,7 +271,7 @@
                         <p>Focus on leading patent regions</p>
                     </div>
                     <div class="viz-image">
-                        <img src="top_5_patent_count.png" alt="Patents by MSA - Top 5 Highlighted">
+                        <img src="top_5_patent_count.png" alt="Patents by MSA - Top 5 Highlighted" />
                     </div>
                     <div class="viz-description">
                         <strong>Description:</strong> Enhanced version of the choropleth map with the top 5 MSAs by patent count highlighted with bold black outlines. Each top region is marked with a labeled marker, making it easy to identify and locate the leading innovation hubs.
@@ -271,32 +282,36 @@
             <div class="highlight">
                 <h3>Key Insights</h3>
                 <p>
-                    <strong>Innovation Hotspots:</strong> Patent activity is highly concentrated in a small number of MSAs. The highest totals in this dataset include:
+                    <strong>Innovation Hotspots:</strong> Patent activity is highly concentrated in a small number of MSAs. The top 5 regions in this dataset include:
                 </p>
+
                 <ul class="feature-list">
-                    <li><strong>San Jose-Sunnyvale-Santa Clara, CA:</strong> 143,473 patents (highest MSA total)</li>
-                    <li><strong>New York:</strong> 92,577 patents</li>
-                    <li><strong>San Francisco:</strong> 89,981 patents</li>
-                    <li><strong>Los Angeles:</strong> 74,381 patents</li>
-                    <li><strong>Boston:</strong> 62,653 patents</li>
+                    <li><strong>San Jose–Sunnyvale–Santa Clara, CA:</strong> 14,618 patents</li>
+                    <li><strong>Seattle–Tacoma–Bellevue, WA:</strong> 4,739 patents</li>
+                    <li><strong>Minneapolis–St. Paul–Bloomington, MN-WI:</strong> 3,419 patents</li>
+                    <li><strong>Dallas–Fort Worth–Arlington, TX:</strong> 3,026 patents</li>
+                    <li><strong>Philadelphia–Camden–Wilmington, PA-NJ-DE-MD:</strong> 2,357 patents</li>
                 </ul>
 
                 <p>
-                    <strong>Distribution characteristics:</strong> The patent counts are strongly right-skewed a handful of metro areas contain a large share of total patents. This makes linear color scales appear very light for most areas. Consider using a log scale, quantile bins, or percentile-based normalization to improve visual contrast.
+                    <strong>Distribution characteristics:</strong> The patent counts are strongly right-skewed — a handful of metro areas contain a large share of total patents. This makes linear color scales appear very light for most areas. Consider using a log scale, quantile bins, or percentile-based normalization to improve visual contrast.
                 </p>
-
-                <p>
-                    <strong>Suggested next analyses:</strong>
-                </p>
-                <ul class="feature-list">
-                    <li>Normalize patent counts by population or employment to compute patents per capita or per employee.</li>
-                    <li>Aggregate MSAs to state level for a higher-level view and easier labeling.</li>
-                    <li>Show temporal trends (small multiples or an animated map) to observe how innovation hubs change over time.</li>
-                    <li>Include interactive popups (Folium/Leaflet) so users can explore exact counts and metadata on hover/click.</li>
-                </ul>
 
                 <p>
                     <strong>Data Source:</strong> US Patent and Trademark Office (USPTO) patent grant data aggregated by Metropolitan Statistical Area. The boundaries are from the U.S. Census Bureau cartographic boundary files.
+                </p>
+            </div>
+
+            <div class="summary">
+                <h3>Summary</h3>
+                <p>
+                    These two maps give a clear picture of how patents were distributed across U.S. metropolitan areas in 2015. The first map highlights the <strong>top five MSAs</strong>, making it easy to see which regions led the country in innovation. Unsurprisingly, <strong>San Jose–Sunnyvale–Santa Clara, CA</strong> (Silicon Valley) stands far above the rest, with 14,618 patents—an enormous gap compared to every other area. The next highest regions, including <strong>Seattle, Minneapolis–St. Paul, Dallas–Fort Worth, and Philadelphia</strong>, each contribute strong patent numbers but still trail Silicon Valley by a wide margin. Their strengths reflect regional industries like software, medical technology, telecom, and pharmaceuticals.
+                </p>
+                <p>
+                    The second map steps back and shows <strong>all MSAs</strong>, giving a broader sense of the national landscape. Here, it becomes even more noticeable how <strong>concentrated patent activity is</strong>. Only a small handful of regions are shaded more intensely, mainly along the West Coast, the Northeast, and parts of the Midwest. Much of the country shows relatively low patent output, indicating that innovation tends to cluster in places with strong tech ecosystems, research institutions, and high-skilled workers.
+                </p>
+                <p>
+                    Viewed together, the two maps show not only <strong>which cities lead in innovation</strong>, but also how unevenly that innovation is spread across the U.S. They highlight a landscape where a few powerful hubs dominate patent production, while most regions contribute at a more modest level.
                 </p>
             </div>
         </div>
@@ -307,3 +322,4 @@
     </div>
 </body>
 </html>
+```
